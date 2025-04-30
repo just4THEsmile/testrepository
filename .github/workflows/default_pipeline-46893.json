@@ -1,0 +1,139 @@
+{
+  "blocks": {
+    "languageVersion": 0,
+    "blocks": [
+      {
+        "type": "ecore_pipeline",
+        "id": "z[Ib{|:nKA_X-((s~Y7y",
+        "x": 75,
+        "y": 24,
+        "fields": {
+          "ATTR_NAME": "default_pipeline",
+          "ATTR_CONCURRENT": false
+        },
+        "inputs": {
+          "CONT_WHEN": {
+            "block": {
+              "type": "ecore_when",
+              "id": "DTaRHa_sIjpJ}I/yuaf3",
+              "fields": {
+                "ATTR_NAME": "on_push",
+                "ATTR_TRIGGER": "workflow_dispatch",
+                "ATTR_TIMER": ""
+              }
+            }
+          },
+          "CONT_JOB": {
+            "block": {
+              "type": "ecore_job",
+              "id": "g9%$Xvx-66h,Oh/PL!Ki",
+              "fields": {
+                "ATTR_NAME": "build_test",
+                "ATTR_ALLOWFAILURE": false,
+                "ATTR_DESCRIPTION": "Build and test the instalation"
+              },
+              "inputs": {
+                "CONT_TOOL": {
+                  "block": {
+                    "type": "ecore_tool",
+                    "id": "fU!MZF|^*4yx9Zdg+SXA",
+                    "fields": {
+                      "ATTR_NAME": "ubuntu-latest"
+                    }
+                  }
+                },
+                "CONT_COMMAND": {
+                  "block": {
+                    "type": "ecore_command",
+                    "id": "x~rd@7X]hL(FQntuYO:`",
+                    "fields": {
+                      "ATTR_NAME": ""
+                    },
+                    "inputs": {
+                      "CONT_TOOL": {
+                        "block": {
+                          "type": "ecore_tool_value",
+                          "id": "R(v=JXNbA4YBt?wxmnPb",
+                          "fields": {
+                            "ATTR_NAME": "actions/checkout@v4"
+                          }
+                        }
+                      }
+                    },
+                    "next": {
+                      "block": {
+                        "type": "ecore_command",
+                        "id": "^}{I]+^!65Qxv9JcTWwo",
+                        "fields": {
+                          "ATTR_NAME": "install dependencies"
+                        },
+                        "inputs": {
+                          "CONT_TOOL": {
+                            "block": {
+                              "type": "ecore_tool_value",
+                              "id": "U{n(uG$NRb8NsTTAXhA-",
+                              "fields": {
+                                "ATTR_NAME": "actions/checkout@v3"
+                              }
+                            }
+                          },
+                          "CONT_PARAMETER": {
+                            "block": {
+                              "type": "ecore_parameter",
+                              "id": "$YYtrg8g1_W|N]vXW##,",
+                              "fields": {
+                                "ATTR_PARAMETER": "java-version:'11'"
+                              },
+                              "next": {
+                                "block": {
+                                  "type": "ecore_parameter",
+                                  "id": "mzV#w{8yw(@8vT;p}PFM",
+                                  "fields": {
+                                    "ATTR_PARAMETER": "distribution:'temurin'"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "next": {
+                          "block": {
+                            "type": "ecore_command",
+                            "id": "v1fZp+v.[]Q9E0N},Uj6",
+                            "fields": {
+                              "ATTR_NAME": "build and test"
+                            },
+                            "inputs": {
+                              "CONT_TOOL": {
+                                "block": {
+                                  "type": "ecore_tool_value",
+                                  "id": "S|wvl7,wz/2tqXDzrA{_",
+                                  "fields": {
+                                    "ATTR_NAME": "mvn"
+                                  }
+                                }
+                              },
+                              "CONT_PARAMETER": {
+                                "block": {
+                                  "type": "ecore_parameter",
+                                  "id": "|wh663xG%ZT7Yt0/k+m$",
+                                  "fields": {
+                                    "ATTR_PARAMETER": "-B verify"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
