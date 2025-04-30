@@ -12,6 +12,6 @@ jobs:
         with:
           python-version: '3.9'
       - name: install dep
-        run: install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: check version
         run: python3 --version
