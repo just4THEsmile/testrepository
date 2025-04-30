@@ -1,4 +1,4 @@
-name: test_pipeline
+name: tutorial_pipeline_ga
 on:
   workflow_dispatch:
 jobs:
