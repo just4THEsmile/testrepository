@@ -1,0 +1,34 @@
+# Generated CI/CD Pipeline YAML
+# This YAML is compatible with GitHub Actions
+
+# Pipeline: default_pipeline
+name: default_pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_test:
+    # Build and test the instalation
+    runs-on: ubuntu-latest
+    steps:
+            - name: command_48848
+              uses: actions/checkout@v4
+            - name: Install dependencies
+              uses: actions/setup-java@v3
+              with:
+                        Java-version: '11'
+                        node-version: '18'
+                        distribution: 'temurin'
+            - name: install dep
+              run: yarn install
+            - name: Build and test
+              run: yarn test
+  deploy_heroku:
+    # deploy
+    runs-on: ubuntu-latest
+    steps:
+            - name: command_55267
+              uses: actions/checkout@v4
+            - name: heroku
+              uses: akhileshns/heroku-deploy@v3.12.12
