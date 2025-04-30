@@ -1,0 +1,90 @@
+{
+  "blocks": {
+    "languageVersion": 0,
+    "blocks": [
+      {
+        "type": "ecore_pipeline",
+        "id": "z[Ib{|:nKA_X-((s~Y7y",
+        "x": 75,
+        "y": 24,
+        "fields": {
+          "ATTR_NAME": "default_pipeline",
+          "ATTR_CONCURRENT": false
+        },
+        "inputs": {
+          "CONT_WHEN": {
+            "block": {
+              "type": "ecore_when",
+              "id": "DTaRHa_sIjpJ}I/yuaf3",
+              "fields": {
+                "ATTR_NAME": "on_workflow_dispatch",
+                "ATTR_TRIGGER": "workflow_dispatch",
+                "ATTR_TIMER": ""
+              }
+            }
+          },
+          "CONT_JOB": {
+            "block": {
+              "type": "ecore_job",
+              "id": "g9%$Xvx-66h,Oh/PL!Ki",
+              "fields": {
+                "ATTR_NAME": "build",
+                "ATTR_ALLOWFAILURE": false,
+                "ATTR_DESCRIPTION": "Build and test the application"
+              },
+              "inputs": {
+                "CONT_TOOL": {
+                  "block": {
+                    "type": "ecore_tool",
+                    "id": "fU!MZF|^*4yx9Zdg+SXA",
+                    "fields": {
+                      "ATTR_NAME": "ubuntu-latest"
+                    }
+                  }
+                },
+                "CONT_COMMAND": {
+                  "block": {
+                    "type": "ecore_command",
+                    "id": "x~rd@7X]hL(FQntuYO:`",
+                    "fields": {
+                      "ATTR_NAME": "setup"
+                    },
+                    "inputs": {
+                      "CONT_TOOL": {
+                        "block": {
+                          "type": "ecore_tool_value",
+                          "id": "R(v=JXNbA4YBt?wxmnPb",
+                          "fields": {
+                            "ATTR_NAME": "npm"
+                          }
+                        }
+                      },
+                      "CONT_PARAMETER": {
+                        "block": {
+                          "type": "ecore_parameter",
+                          "id": "w(*oscU@^g#t^yE5@C5V",
+                          "fields": {
+                            "ATTR_PARAMETER": "install"
+                          },
+                          "next": {
+                            "block": {
+                              "type": "ecore_parameter",
+                              "id": "N~m$CM,!TVZ+P.4Ai;aL",
+                              "fields": {
+                                "ATTR_PARAMETER": "install --ci"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
