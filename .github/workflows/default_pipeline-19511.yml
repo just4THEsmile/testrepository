@@ -1,0 +1,23 @@
+# Generated CI/CD Pipeline YAML
+# This YAML is compatible with GitHub Actions
+
+# Pipeline: default_pipeline
+name: default_pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_test:
+    # Build and test the instalation
+    runs-on: ubuntu-latest
+    steps:
+            - name: command_35447
+              uses: actions/checkout@v4
+            - name: Install dependencies
+              uses: actions/checkout@v3
+              with:
+                        java-version: '11'
+                        distribution: 'temurin'
+            - name: Build and test
+              run: mvn -B verify
